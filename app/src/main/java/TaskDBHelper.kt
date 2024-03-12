@@ -36,12 +36,15 @@ class TaskDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
         db.close()
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     fun deleteTask(id: Int): Int {
         val db = this.writableDatabase
         val deletedRows = db.delete(TABLE_TASKS, "$KEY_ID = ?", arrayOf(id.toString()))
         db.close()
         return deletedRows
     }
+=======
+>>>>>>> 60898ae3102659eee2f263bee7f82e036092da82
 =======
 >>>>>>> 60898ae3102659eee2f263bee7f82e036092da82
 

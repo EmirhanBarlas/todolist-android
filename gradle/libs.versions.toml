@@ -22,6 +22,10 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 play-services-gcm = { group = "com.google.android.gms", name = "play-services-gcm", version.ref = "playServicesGcm" }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60898ae3102659eee2f263bee7f82e036092da82
 =======
 
 >>>>>>> 60898ae3102659eee2f263bee7f82e036092da82
