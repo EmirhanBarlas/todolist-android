@@ -1,15 +1,16 @@
 package com.example.todolist
 
-import Task
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
+data class Task(val id: Int, val title: String, val description: String)
+
 class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
-    class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.task_title)
         val descriptionTextView: TextView = itemView.findViewById(R.id.task_description)
     }

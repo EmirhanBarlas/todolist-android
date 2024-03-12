@@ -1,6 +1,14 @@
 package com.example.todolist
 
-import Task
+<<<<<<< HEAD
+import android.os.Bundle
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+=======
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -8,16 +16,21 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.app.AlertDialog
+>>>>>>> 60898ae3102659eee2f263bee7f82e036092da82
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var taskAdapter: TaskAdapter
     private val tasks = mutableListOf<Task>()
+    private lateinit var dbHelper: TaskDBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        dbHelper = TaskDBHelper(this)
+        tasks.addAll(dbHelper.getAllTasks())
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val floatingActionButton: FloatingActionButton = findViewById(R.id.floatingActionButton)
@@ -30,14 +43,24 @@ class MainActivity : AppCompatActivity() {
             showAddTaskDialog()
         }
 
+<<<<<<< HEAD
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+=======
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+>>>>>>> 60898ae3102659eee2f263bee7f82e036092da82
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
                 return false
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
+<<<<<<< HEAD
+                val task = tasks[position]
                 taskAdapter.deleteTask(position)
+                dbHelper.deleteTask(task.id)
+=======
+                taskAdapter.deleteTask(position)
+>>>>>>> 60898ae3102659eee2f263bee7f82e036092da82
             }
         })
 
@@ -57,9 +80,11 @@ class MainActivity : AppCompatActivity() {
                 val title = taskEditText.text.toString()
                 val description = taskDescriptionEditText.text.toString()
                 if (title.isNotEmpty()) {
-                    val id = UUID.randomUUID().toString()
-                    tasks.add(Task(id.hashCode(), title, description))
+                    val id = UUID.randomUUID().hashCode()
+                    val task = Task(id, title, description)
+                    tasks.add(task)
                     taskAdapter.notifyItemInserted(tasks.size - 1)
+                    dbHelper.addTask(task)
                 }
             }
             .setNegativeButton("Cancel", null)
@@ -67,4 +92,8 @@ class MainActivity : AppCompatActivity() {
 
         dialog.show()
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 60898ae3102659eee2f263bee7f82e036092da82

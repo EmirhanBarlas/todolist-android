@@ -1,4 +1,8 @@
 <resources>
+<<<<<<< HEAD
+    <string name="app_name">To Do List [ Barlas ]</string>
+=======
     <string name="app_name">todolist</string>
+>>>>>>> 60898ae3102659eee2f263bee7f82e036092da82
     <string name="add_task_button">Add Task</string>
 </resources>
